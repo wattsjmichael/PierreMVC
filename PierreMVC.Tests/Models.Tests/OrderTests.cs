@@ -6,8 +6,12 @@ using PierreMVC.Models;
 namespace PierreMVC.Tests
 {
   [TestClass]
-  public class OrderTests
+  public class OrderTests : IDisposable
   {
+    public void Dispose()
+    {
+      Order.ClearAll();
+    }
 
     [TestMethod]
     public void OrderContructor_CreatesInstanceOfOrder_Order()
@@ -42,7 +46,7 @@ namespace PierreMVC.Tests
       Order newOrder1 = new Order(description01);
       Order newOrder2 = new Order(description02);
       
-      Order result = new Order("12 Pastries");
+      Order result = Order.Find(2);
       
       Assert.AreEqual(newOrder2, result);
     }
