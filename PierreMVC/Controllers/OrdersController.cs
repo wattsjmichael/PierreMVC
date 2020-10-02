@@ -14,7 +14,7 @@ namespace PierreMVC.Controllers
     }
 
     [HttpGet("/orders/new")]
-    public ActionResult CreateForm()
+    public ActionResult New()
     {
       return View();
     }
@@ -26,11 +26,17 @@ namespace PierreMVC.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpPost("/orders")]
+    [HttpPost("/orders/delete")]
     public ActionResult DeleteAll()
     {
       Order.ClearAll();
-      Return View;
+      return View();
+    }
+    [HttpGet("/orders/{id}")]
+    public ActionResult Show(int id)
+    {
+      Order foundOrder = Order.Find(id);
+      return View(foundOrder);
     }
   }
 }
