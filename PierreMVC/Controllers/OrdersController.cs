@@ -6,7 +6,7 @@ namespace PierreMVC.Controllers
 {
   public class OrdersController : Controller
   {
-    [HttpGet ("/Orders")]
+    [HttpGet ("/orders")]
     public ActionResult Index()
     {
       List<Order> allOrders = Order.GetAll();
@@ -14,7 +14,7 @@ namespace PierreMVC.Controllers
     }
 
     [HttpGet("/orders/new")]
-    public ActionResult CreateOrderForm()
+    public ActionResult CreateForm()
     {
       return View();
     }
@@ -24,6 +24,13 @@ namespace PierreMVC.Controllers
     {
       Order myOrder = new Order(description);
       return RedirectToAction("Index");
+    }
+
+    [HttpPost("/orders")]
+    public ActionResult DeleteAll()
+    {
+      Order.ClearAll();
+      Return View;
     }
   }
 }
