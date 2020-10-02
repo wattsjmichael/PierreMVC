@@ -12,5 +12,10 @@ namespace PierreMVC.Models
       Description = description;
       _instances.Add(this);
     }
+
+    public static List<Order> GetAll()
+    {
+      return _instances;
+    }
   }
 }
