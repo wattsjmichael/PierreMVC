@@ -6,37 +6,30 @@ namespace PierreMVC.Controllers
 {
   public class OrdersController : Controller
   {
-    [HttpGet ("/orders")]
-    public ActionResult Index()
+
+    [HttpGet("/vendors/{vendorId}/orders/new")]
+    public ActionResult New(int vendorId)
     {
-      List<Order> allOrders = Order.GetAll();
-      return View (allOrders);
+      Vendor vendor = Vendor.Find(vendorId);
+      return View(vendor);
     }
 
-    [HttpGet("/orders/new")]
-    public ActionResult New()
-    {
-      return View();
-    }
-
-    [HttpPost("/orders")]
-    public ActionResult Create(string description)
-    {
-      Order myOrder = new Order(description);
-      return RedirectToAction("Index");
-    }
-
+  
     [HttpPost("/orders/delete")]
     public ActionResult DeleteAll()
     {
       Order.ClearAll();
       return View();
     }
-    [HttpGet("/orders/{id}")]
-    public ActionResult Show(int id)
+    [HttpGet("/orders/{ordersId}/orders/{orderId}")]
+    public ActionResult Show(int vendorId, int orderId)
     {
-      Order foundOrder = Order.Find(id);
-      return View(foundOrder);
+      Order order = Order.Find(orderId);
+      Vendor vendor = Vendor.Find(vendorId);
+      Dictionary<string, object> model = new Dictionary<string, object> ();
+      model.Add("order", order);
+      model.Add("vendor", vendor);
+      return View(model);
     }
   }
 }

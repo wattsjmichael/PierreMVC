@@ -11,20 +11,23 @@ namespace PierreMVC.Controllers
     public ActionResult Index()
     {
       List<Vendor> allVendors = Vendor.GetAll();
-      return View(AllVendors);
-    
+      return View(allVendors);
+
     }
+
     [HttpGet("/vendors/new")]
     public ActionResult New()
     {
       return View();
     }
+
     [HttpPost("/vendors")]
     public ActionResult Create(string vendorName)
     {
       Vendor newVendor = new Vendor(vendorName);
       return RedirectToAction("Index");
     }
+
     [HttpGet("/vendors/{id}")]
     public ActionResult Show(int id)
     {
@@ -34,6 +37,19 @@ namespace PierreMVC.Controllers
       model.Add("Vendor", selectedVendor);
       model.Add("Orders", vendorOrders);
       return View(model);
+    }
+
+    [HttpPost("/vendors/{vendorId}/orders")]
+    public ActionResult Create(int vendorId, string orderDescription)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Vendor foundVendor = Vendor.Find(vendorId);
+      Order newOrder = new Order(orderDescription);
+      foundVendor.AddOrder(newOrder);
+      List<Order> vendorOrders = foundVendor.Orders;
+      model.Add("orders", vendorOrders);
+      model.Add("vendor", foundVendor);
+      return View("Show", model);
     }
   }
 }
