@@ -27,9 +27,10 @@ namespace PierreMVC.Tests
     public void GetID_OrdersInstantiatewithId_Int()
     {
       string description = "turn right on Barbur";
-      Order newOrder = new Order(description);
+       Order newOrder = new Order(description);
 
-      int result = 12;
+
+      int result = newOrder.Id;
       Assert.AreEqual(1, result);
     }
   }
