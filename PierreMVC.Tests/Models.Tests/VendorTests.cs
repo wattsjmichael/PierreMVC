@@ -6,8 +6,14 @@ using System;
 namespace PierreMVC.Tests
 {
   [TestClass]
-  public class VendorTest
+  public class VendorTests : IDisposable
   {
+    public void Dispose()
+    {
+      Vendor.ClearAll();
+    }
+
+
     [TestMethod]
     public void VendorConstructor_CreatesInstanceofVendor_Vendor()
     {
