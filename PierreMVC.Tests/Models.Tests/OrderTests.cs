@@ -23,6 +23,15 @@ namespace PierreMVC.Tests
       string result =  newOrder.Description;
       Assert.AreEqual(description, result);
     }
+    [TestMethod]
+    public void GetID_OrdersInstantiatewithId_Int()
+    {
+      string description = "turn right on Barbur";
+      Order newOrder = new Order(description);
+
+      int result = 12;
+      Assert.AreEqual(1, result);
+    }
   }
 
 }
