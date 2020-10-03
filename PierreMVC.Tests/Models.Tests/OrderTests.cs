@@ -16,22 +16,26 @@ namespace PierreMVC.Tests
     [TestMethod]
     public void OrderContructor_CreatesInstanceOfOrder_Order()
     {
-      Order newOrder = new Order("Alpha");
+      Order newOrder = new Order("Alpha", 23, "2019-11-24");
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
     [TestMethod]
     public void GetDescription_ReturnsDescription_String()
     {
       string description = "Turn Right on Barbur";
-      Order newOrder = new Order(description);
+      int price = 24;
+      string date = "2020-10-13";
+      Order newOrder = new Order(description, price, date);
       string result = newOrder.Description;
       Assert.AreEqual(description, result);
     }
     [TestMethod]
     public void GetID_OrdersInstantiatewithId_Int()
     {
+      int price = 24;
+      string date = "2020-10-13";
       string description = "turn right on Barbur";
-      Order newOrder = new Order(description);
+      Order newOrder = new Order(description, price, date);
 
 
       int result = newOrder.Id;
@@ -41,15 +45,39 @@ namespace PierreMVC.Tests
     public void Find_ReturnsCorrectOrder_Order()
     {
       string description01 = "Turn Left on Barbur";
+      int price01 = 24;
+      string date01 = "2020-10-13";
       string description02 = "17 Bagels";
+      int price02 = 12;
+      string date02 = "2020-11-13";
 
-      Order newOrder1 = new Order(description01);
-      Order newOrder2 = new Order(description02);
-      
+
+      Order newOrder1 = new Order(description01, price01, date01);
+      Order newOrder2 = new Order(description02, price02, date02);
+
       Order result = Order.Find(2);
-      
+
       Assert.AreEqual(newOrder2, result);
     }
+    public void GetDeliveryDate_ReturnsDeliveryDate_String()
+    {
+      string date = "2020-11-23";
+      int price = 24;
+      string description = "Left on Barbur";
+      Order newOrder = new Order(description, price, date);
+      string result = newOrder.Date;
+      Assert.AreEqual(date, result);
+    }
+    public void GetPrice_ReturnsPrice_Int()
+    {
+      string date = "2020-11-23";
+      int price = 24;
+      string description = "Left on Barbur";
+      Order newOrder = new Order(description, price, date);
+      int result = newOrder.Price;
+      Assert.AreEqual(price, result);
+    }
   }
+
 
 }

@@ -60,8 +60,10 @@ namespace PierreMVC.Tests
     [TestMethod]
     public void AddOrder_AssociatesOrderwithVendor_OrderList()
     {
+      int price = 24;
       string description = "12 Bagels";
-      Order newOrder = new Order(description);
+      string date = "2020-09-22";
+      Order newOrder = new Order(description, price, date);
       List<Order> newList = new List<Order> {newOrder};
       string name = "Sal's Diner";
       Vendor newVendor = new Vendor(name);
