@@ -1,0 +1,14 @@
+h1, h2, h3 {
+  font-family: 'Corben', Georgia, Times, serif;
+  text-align: center;
+  text-shadow: 1px 1px 1px #ccc
+}
+p, div, a, ol{
+  font-family: 'Nobile', Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-size: larger;
+}
+body{
+  background: url(../Img/texture.png) repeat 0 0;
+
+}

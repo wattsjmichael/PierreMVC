@@ -1,11 +1,15 @@
 @using PierreMVC.Models;
+@{
+  Layout = "_Layout";
+}
 
 <h3>Here are all the Orders for this Vendor</h3>
+<div>
 <ol>
   
   @foreach (Order order in @Model["orders"])
   {
-    <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Description</a></li>
+    <ul><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Description</a></ul><br>
   }
 </ol>
 
@@ -15,6 +19,6 @@
 <p><a href='/'>Return to the Front Page</a></p>
 
 <form action="/orders/delete" method="post">
-  <button type="submit" name="button">Clear All Items</button>
+<button type="submit" name="button">Clear All Orders</button>
 </form>
-
+</div>

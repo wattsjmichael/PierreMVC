@@ -2,6 +2,7 @@
   Layout = "_Layout";
 }
 <h1>Order Details:</h1>
+<div>
 <h3>Vendor: @Model["vendor"].Name</h3>
 <h3>Point of Contact: @Model["order"].Contact</h3>
 <h3>Phone Number: @Model["vendor"].PhoneNumber</h3>
@@ -10,3 +11,4 @@
 
 <a href='/vendors/@Model["vendor"].Id/orders/new'>Add another order</a>
 <a href='/vendors'>View all vendors</a>
+</div>
