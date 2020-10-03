@@ -6,13 +6,16 @@ namespace PierreMVC.Models
   {
     private static List<Vendor> _instances = new List<Vendor> { };
     public string Name {get; set;}
+
+    public string PhoneNumber {get; set;}
     
     public int Id {get;}
     public List<Order> Orders {get; set;}
 
-    public Vendor(string vendorName)
+    public Vendor(string vendorName, string vendorPhoneNumber)
     {
       Name = vendorName;
+      PhoneNumber = vendorPhoneNumber;
       _instances.Add(this);
       Id = _instances.Count;
       Orders = new List<Order>{ };

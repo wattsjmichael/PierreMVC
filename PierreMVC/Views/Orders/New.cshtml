@@ -5,11 +5,14 @@
 
 <form action="/vendors/@Model.Id/orders" method="post">
   <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
-  <label for="orderDescription">Point of Contact</label>
+  <label for="orderDescription">What Did They Order</label>
   <input id="orderDescription" name="orderDescription" type="text">
+  <label for="contact">Name of Contact</label>
+  <input id="contact" name="contact" type="text">
   <label for="orderTotal">Order Total</label>
   <input id="orderTotal" name="orderTotal" type="number">
   <label for="deliveryDate">Delivery Date</label>
   <input id="deliveryDate" name="deliveryDate" type="date">
+  
   <button type='submit'>Add Order</button>
 </form>

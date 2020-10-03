@@ -22,9 +22,9 @@ namespace PierreMVC.Controllers
     }
 
     [HttpPost("/vendors")]
-    public ActionResult Create(string vendorName)
+    public ActionResult Create(string vendorName, string vendorPhoneNumber)
     {
-      Vendor newVendor = new Vendor(vendorName);
+      Vendor newVendor = new Vendor(vendorName, vendorPhoneNumber);
       return RedirectToAction("Index");
     }
 
@@ -40,11 +40,11 @@ namespace PierreMVC.Controllers
     }
 
     [HttpPost("/vendors/{vendorId}/orders")]
-    public ActionResult Create(int vendorId, string orderDescription, int orderTotal, string deliveryDate)
+    public ActionResult Create(int vendorId, string orderDescription, int orderTotal, string deliveryDate, string contact)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Vendor foundVendor = Vendor.Find(vendorId);
-      Order newOrder = new Order(orderDescription, orderTotal, deliveryDate);
+      Order newOrder = new Order(orderDescription, orderTotal, deliveryDate, contact);
       foundVendor.AddOrder(newOrder);
       List<Order> vendorOrders = foundVendor.Orders;
       model.Add("orders", vendorOrders);

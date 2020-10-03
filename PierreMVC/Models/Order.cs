@@ -9,14 +9,17 @@ namespace PierreMVC.Models
 
     public string Date { get; set;}
 
+    public string Contact {get; set;}
+
     public int Id { get; }
     private static List<Order> _instances = new List<Order> {};
 
-    public Order(string description, int price, string date)
+    public Order(string description, int price, string date, string contact)
     {
       Description = description;
       Price = price;
       Date = date;
+      Contact = contact;
 
       _instances.Add(this);
       Id = _instances.Count;
@@ -36,5 +39,6 @@ namespace PierreMVC.Models
     {
       return _instances[searchId-1];
     }
+    
   }
 }
