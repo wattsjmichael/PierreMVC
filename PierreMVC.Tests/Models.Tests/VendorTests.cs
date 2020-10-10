@@ -17,14 +17,15 @@ namespace PierreMVC.Tests
     [TestMethod]
     public void VendorConstructor_CreatesInstanceofVendor_Vendor()
     {
-      Vendor newVendor = new Vendor("Sal's Deli");
+      Vendor newVendor = new Vendor("Sal's Deli", "360-444-444");
       Assert.AreEqual(typeof(Vendor), newVendor.GetType());
     }
     [TestMethod]
     public void GetName_ReturnsName_String()
     {
       string name = "Sal's Deli";
-      Vendor newVendor = new Vendor(name);
+      string vendorPhoneNumber = "360-444-4444";
+      Vendor newVendor = new Vendor(name, vendorPhoneNumber);
       string result = newVendor.Name;
       Assert.AreEqual(name, result);
     }
@@ -32,7 +33,8 @@ namespace PierreMVC.Tests
     public void GetId_ReturnsVendorId_Int()
     {
       string name = "Sal's Deli";
-      Vendor newVendor = new Vendor(name);
+      string vendorPhoneNumber = "360-444-4444";
+      Vendor newVendor = new Vendor(name, vendorPhoneNumber);
       int result = newVendor.Id;
       Assert.AreEqual(1, result);
     }
@@ -41,8 +43,9 @@ namespace PierreMVC.Tests
     {
       string name01 = "Sal's Deli";
       string name02 = "Ritchies Diner";
-      Vendor newVendor1 = new Vendor(name01);
-      Vendor newVendor2 = new Vendor(name02);
+      string vendorPhoneNumber = "360-444-4444";
+      Vendor newVendor1 = new Vendor(name01,vendorPhoneNumber);
+      Vendor newVendor2 = new Vendor(name02, vendorPhoneNumber);
       List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
       List<Vendor> result = Vendor.GetAll();
       CollectionAssert.AreEqual(newList, result);
@@ -52,8 +55,9 @@ namespace PierreMVC.Tests
     {
       string name01 = "Sal's Deli";
       string name02 = "Ritchies Diner";
-      Vendor newVendor1 = new Vendor(name01);
-      Vendor newVendor2 = new Vendor(name02);
+      string vendorPhoneNumber = "360-444-4444";
+      Vendor newVendor1 = new Vendor(name01, vendorPhoneNumber);
+      Vendor newVendor2 = new Vendor(name02, vendorPhoneNumber);
       Vendor result = Vendor.Find(2);
       Assert.AreEqual(newVendor2, result);
     }
@@ -63,10 +67,12 @@ namespace PierreMVC.Tests
       int price = 24;
       string description = "12 Bagels";
       string date = "2020-09-22";
-      Order newOrder = new Order(description, price, date);
+      string contact = "Steve";
+      Order newOrder = new Order(description, price, date, contact);
       List<Order> newList = new List<Order> {newOrder};
       string name = "Sal's Diner";
-      Vendor newVendor = new Vendor(name);
+      string vendorPhoneNumber = "360-444-4444";
+      Vendor newVendor = new Vendor(name, vendorPhoneNumber);
       newVendor.AddOrder(newOrder);
       List<Order> result = newVendor.Orders;
       CollectionAssert.AreEqual(newList, result);

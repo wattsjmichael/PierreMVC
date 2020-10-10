@@ -16,7 +16,7 @@ namespace PierreMVC.Tests
     [TestMethod]
     public void OrderContructor_CreatesInstanceOfOrder_Order()
     {
-      Order newOrder = new Order("Alpha", 23, "2019-11-24");
+      Order newOrder = new Order("Alpha", 23, "2019-11-24", "Michael");
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
     [TestMethod]
@@ -25,7 +25,8 @@ namespace PierreMVC.Tests
       string description = "Turn Right on Barbur";
       int price = 24;
       string date = "2020-10-13";
-      Order newOrder = new Order(description, price, date);
+      string contact = "Michael";
+      Order newOrder = new Order(description, price, date, contact);
       string result = newOrder.Description;
       Assert.AreEqual(description, result);
     }
@@ -35,7 +36,8 @@ namespace PierreMVC.Tests
       int price = 24;
       string date = "2020-10-13";
       string description = "turn right on Barbur";
-      Order newOrder = new Order(description, price, date);
+      string contact = "Michael";
+      Order newOrder = new Order(description, price, date, contact);
 
 
       int result = newOrder.Id;
@@ -50,10 +52,11 @@ namespace PierreMVC.Tests
       string description02 = "17 Bagels";
       int price02 = 12;
       string date02 = "2020-11-13";
+      string contact = "Gillian";
 
 
-      Order newOrder1 = new Order(description01, price01, date01);
-      Order newOrder2 = new Order(description02, price02, date02);
+      Order newOrder1 = new Order(description01, price01, date01, contact);
+      Order newOrder2 = new Order(description02, price02, date02, contact);
 
       Order result = Order.Find(2);
 
@@ -64,7 +67,8 @@ namespace PierreMVC.Tests
       string date = "2020-11-23";
       int price = 24;
       string description = "Left on Barbur";
-      Order newOrder = new Order(description, price, date);
+      string contact = "Stella";
+      Order newOrder = new Order(description, price, date, contact);
       string result = newOrder.Date;
       Assert.AreEqual(date, result);
     }
@@ -73,7 +77,8 @@ namespace PierreMVC.Tests
       string date = "2020-11-23";
       int price = 24;
       string description = "Left on Barbur";
-      Order newOrder = new Order(description, price, date);
+      string contact = "Marla";
+      Order newOrder = new Order(description, price, date, contact);
       int result = newOrder.Price;
       Assert.AreEqual(price, result);
     }
